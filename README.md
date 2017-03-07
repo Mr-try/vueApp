@@ -1,4 +1,4 @@
-# vue+vueRoute+elementUI+mockjs+axiosJs
+# vue+vueRoute+elementUI+mockjs+axiosjs
 
 > 包含登陆页,未用到store,因此srv/store目录暂时没用
 
