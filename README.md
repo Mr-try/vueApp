@@ -1,6 +1,6 @@
-# vue+vueRoute+element
+# vue+vueRoute+elementUI+mockjs+axiosJs
 
-> A Vue.js project
+> 包含登陆页,未用到store,因此srv/store目录暂时没用
 
 ## Build Setup
 
