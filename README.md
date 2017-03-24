@@ -1,6 +1,6 @@
 # vue+vueRoute+elementUI+mockjs+axiosjs
 
-> 包含登陆页,未用到store,因此srv/store目录暂时没用
+> vuex充当前端"数据库"
 
 ## Build Setup
 
