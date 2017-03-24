@@ -1,6 +1,7 @@
-# vue+vueRoute+elementUI+mockjs+axiosjs
+# vue+vueRoute+elementUI+mockjs
 
 > vuex充当前端"数据库"
+> axios太垃圾了，千万别用
 
 ## Build Setup
 
