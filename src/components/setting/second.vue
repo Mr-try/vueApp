@@ -1,55 +1,37 @@
 <template>
     <div>
-        <el-row :gutter="24" style="float:left;padding-top: 30px ;z-index: 9">
-            <el-form :inline="true" :model="formInline" class="demo-form-inline">
-                <el-form-item>
-                    <el-input v-model="formInline.user" placeholder="人员名称"></el-input>
-                </el-form-item>
-                <el-form-item>
-                    <el-select v-model="formInline.department" placeholder="全部乡镇">
-                        <el-option v-for="item in options" :label="item.label" :value="item.value"></el-option>
-                    </el-select>
-                </el-form-item>
+        <!--<el-row :gutter="24" style="float:left;padding-top: 30px ;z-index: 9">-->
+            <!--<el-form :inline="true" :model="formInline" class="demo-form-inline">-->
+                <!--<el-form-item>-->
+                    <!--<el-input v-model="formInline.user" placeholder="人员名称"></el-input>-->
+                <!--</el-form-item>-->
+                <!--<el-form-item>-->
+                    <!--<el-select v-model="formInline.department" placeholder="全部乡镇">-->
+                        <!--<el-option v-for="item in options" :label="item.label" :value="item.value"></el-option>-->
+                    <!--</el-select>-->
+                <!--</el-form-item>-->
 
-                <el-form-item>
-                    <el-button type="primary" @click="onSubmit">查询</el-button>
-                </el-form-item>
-            </el-form>
-        </el-row>
+                <!--<el-form-item>-->
+                    <!--<el-button type="primary" @click="onSubmit">查询</el-button>-->
+                <!--</el-form-item>-->
+            <!--</el-form>-->
+        <!--</el-row>-->
 
         <el-row :gutter="24" style="">
             <el-table :data="tableData" border style="width: 100%;margin-top: 100px">
-                <el-table-column label="角色名称" width="180">
+                <el-table-column label="角色名称" >
                     <template scope="scope">
-                        {{ scope.row.personName }}
+                        {{ scope.row.urName }}
                     </template>
                 </el-table-column>
-                <el-table-column label="真实姓名" width="180">
+                <el-table-column label="角色说明" >
                     <template scope="scope">
-                        {{ scope.row.realName }}
+                        {{ scope.row.urRemark }}
                     </template>
                 </el-table-column>
-                <el-table-column label="所属乡镇" width="180">
+                <el-table-column label="权限说明" >
                     <template scope="scope">
-                        {{ scope.row.belong }}
-                    </template>
-                </el-table-column>
-                <el-table-column label="账户状态" width="180">
-                    <template scope="scope">
-                        {{ scope.row.accountState }}
-                    </template>
-                </el-table-column>
-                <el-table-column label="操作">
-                    <template scope="scope">
-                        <el-button
-                                size="small"
-                                @click="handleEdit(scope.$index, scope.row)">查看
-                        </el-button>
-                        <el-button
-                                size="small"
-                                type="danger"
-                                @click="handleDelete(scope.$index, scope.row)">系统账户
-                        </el-button>
+                        {{ scope.row.urPowerremark }}
                     </template>
                 </el-table-column>
             </el-table>
@@ -114,20 +96,25 @@
                 console.log(index, row);
             }
         },
-        created: function () {
-            var _self = this;
-            this.$http({
-                method: 'get',
-                url: '/getPersonList',
-                data: this.ruleForm2
-            }).then(function (res) {
-                console.log(res)
-                let json = res.data.data;
-                _self.tableData=json;
-            }).catch(function (err) {
-                console.log(err)
-            })
-        }
+      created: function () {
+        /*
+          get role list
+         */
+        var _self = this;
+        this.$http({
+          url: localStorage.url + '/User/getRoleList',
+          method: 'get',
+          success: function (data) {
+            let json = data.data;
+            _self.tableData = json;
+            console.log(json)
+          },
+          error: function (err) {
+            console.log(err)
+
+          }
+        })
+      }
     }
 </script>
 
